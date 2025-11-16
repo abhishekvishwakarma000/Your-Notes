@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: font1;
+    src: url(../public/font/HelveticaNowDisplay-Black.cf950.woff2);
+}
+
+/* Scrollbar ka width */
+::-webkit-scrollbar {
+  width: 0;
+}
+/* 
+
+::-webkit-scrollbar-track {
+  background: #f1f1f100;
+  border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 0px;
+} */
+
+/* Hover effect */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
