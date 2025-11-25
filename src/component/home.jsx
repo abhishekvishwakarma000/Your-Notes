@@ -4,11 +4,15 @@ const home = () => {
     const [title, setTitle] = useState("");
     const [discription, setDiscription] = useState("");
 
-    const [notes, setNotes] = useState([]);
+    const [notes, setNotes] = useState(() => {
+        const rawtodo = localStorage.getItem("yournotes");
+        if (!rawtodo) return [];
+        return JSON.parse(rawtodo);
+    });
 
     const submitHandler = (e) => {
         e.preventDefault();
-
+        if (!title) return;
         const now = new Date().toLocaleString();
 
         const copyTask = [...notes];
@@ -17,6 +21,15 @@ const home = () => {
         setTitle("");
         setDiscription("");
     };
+
+    // localStorage set item
+
+    localStorage.setItem("yournotes", JSON.stringify(notes));
+
+
+    // ----------
+
+
 
     const deleteNote = (idx) => {
         const copyNotes = [...notes];
@@ -50,7 +63,7 @@ const home = () => {
                         className="w-full lg:h-70 h-50 border border-white px-2 text-white resize-none rounded"
                     />
 
-                    <button className="w-full bg-green-800 text-white py-2 uppercase rounded">
+                    <button type="submit" className="w-full bg-green-800 text-white py-2 uppercase rounded cursor-pointer">
                         Add Note
                     </button>
                 </form>
